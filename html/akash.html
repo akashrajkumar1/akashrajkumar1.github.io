@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARK | Luxury Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #FFFFFF;
+      color: #430D36;
+      overflow-x: hidden;
+      overflow: hidden;
+    }
+
+    header {
+      background-color: #430D36;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid #E5E5E5;
+      animation: slideFadeDown 1s ease-out forwards;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: #FFFFFF;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+    header img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #430D36;
+    }
+
+    .navbar {
+      background-color: #E5E5E5;
+      padding: 12px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    .navbar a {
+      color: #430D36;
+      margin: 0 18px;
+      text-decoration: none;
+      font-size: 18px;
+      position: relative;
+      padding-bottom: 5px;
+      text-transform: uppercase;
+      animation: fadeUp 1s ease-in-out forwards;
+    }
+
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: #430D36;
+      transition: width 0.3s ease;
+    }
+
+    .navbar a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #430D36;
+      animation: fadeSlideTop 1.2s ease forwards;
+    }
+
+    .home p,
+    .about p,
+    .contact p {
+      font-size: 18px;
+      color: #333333;
+      animation: fadeInSlow 1.6s ease forwards;
+    }
+
+    .about img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      margin: 15px;
+      border: 4px solid #430D36;
+      border-radius: 20px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: popIn 1.3s ease forwards;
+    }
+
+    .about img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 20px rgba(67, 13, 54, 0.4);
+    }
+
+    .social a {
+      margin: 0 15px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+      animation: bounceIn 1.2s ease forwards;
+    }
+
+    .social a:hover {
+      transform: translateY(-5px);
+    }
+
+    .social img {
+      width: 40px;
+    }
+
+    .contact p {
+      animation: fadeInSlow 1.4s ease forwards;
+    }
+
+    .contact img {
+      width: 20px;
+      vertical-align: middle;
+      margin-right: 10px;
+      animation: pulse 2s infinite;
+    }
+
+    footer {
+      background-color: #430D36;
+      text-align: center;
+      padding: 20px;
+      color: #E5E5E5;
+      font-size: 14px;
+      border-top: 2px solid #E5E5E5;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideFadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInSlow {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeSlideTop {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.95); opacity: 0; }
+      60% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @media only screen and (max-width: 768px) {
+      header h1 {
+        font-size: 24px;
+      }
+
+      .navbar a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .about img {
+        width: 150px;
+        height: 150px;
+      }
+
+      section h2 {
+        font-size: 24px;
+      }
+
+      .home p,
+      .about p,
+      .contact p {
+        font-size: 16px;
+      }
+
+      .social img {
+        width: 30px;
+      }
+    }
+  </style>
+</head>
+<body style="visibility: hidden; scroll-behavior: auto;">
+  <header>
+    <img src="https://i.ibb.co/gMC4JBjn/ark-logo-jpg.jpg" alt="ARK Logo" style="vertical-align: middle; margin-right: 10px; width: 60px; height: 60px; border-radius: 50%; animation: popIn 1.2s ease-out;" />
+    <h1 style="display: inline-block; vertical-align: middle;">AKASH RAJ KUMAR | ARK PRODUCTION</h1>
+  </header>
+
+  <nav class="navbar">
+    <a href="#home">HOME</a>
+    <a href="#about">ABOUT ME</a>
+    <a href="#social">SOCIAL MEDIA</a>
+    <a href="#contact">CONTACT ME</a>
+  </nav>
+
+  <section id="home" class="home">
+    <h2>WELCOME TO THE WEBSITE OF ARK</h2>
+    <p>Welcome to the official website of ARK — where bold luxury meets timeless style, and digital influence shapes the future. Here, sophistication is more than a look — it’s a lifestyle. Discover the world of Akash Raj Kumar, where every element reflects leadership, vision, and the art of standing out.</p>
+  </section>
+
+  <section id="about" class="about">
+    <h2>ABOUT ME</h2>
+    <img src="https://i.ibb.co/vxsbYQGh/photo1-jpg.jpg" alt="Photo 1" />
+    <img src="https://i.ibb.co/chzPzWZ2/photo2-jpg.jpg" alt="Photo 2" />
+    <a href="https://ibb.co/W4xHvmMK"><img src="https://i.ibb.co/tTmHpVvC/Whats-App-Image-2025-07-01-at-02-11-49-de6c9cde.jpg" alt="Photo 3" border="0"></a>
+    <p>I’m Akash Raj Kumar — a digital influencer, a bold style icon, and a name synonymous with luxury, power, and presence. Known for curating a distinctive image that blends modern elegance with fierce originality, I bring more than just content — I bring a statement. With the commanding energy of a tribal chief and the mindset of a king, I lead not by words, but through influence, identity, and impact. Every post, every image, every move reflects my vision of leadership — fearless, refined, and unforgettable.</p>
+  </section>
+
+   <section id="social" class="social">
+  <h2>SOCIAL MEDIA</h2>
+
+  <a href="https://www.instagram.com/akash_raj_lohana" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" 
+         style="width:60px; height:60px; border-radius:50%; border:4px solid rgba(67, 13, 54, 1); object-fit:cover;" />
+  </a>
+
+  <a href="https://snapchat.com/t/gVyPGrcW" target="_blank">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.hif8gWNvo06pcpK7BIqvtAHaHa?pid=Api&P=0&h=220" alt="Snapchat" 
+         style="width:60px; height:60px; border-radius:50%; border:4px solid rgba(67, 13, 54, 1); object-fit:cover;" />
+  </a>
+
+  <a href="https://www.facebook.com/share/1C2sBKT1S3/?mibextid=wwXIfr" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" 
+         style="width:60px; height:60px; border-radius:50%; border:4px solid rgba(67, 13, 54, 1); object-fit:cover;" />
+  </a>
+
+  <a href="https://www.tiktok.com/@akash.raj17" target="_blank">
+    <img src="https://i.pinimg.com/originals/5d/63/c8/5d63c857404bab94c94a3f5b719628f2.jpg" alt="TikTok" 
+         style="width:60px; height:60px; border-radius:50%; border:4px solid rgba(67, 13, 54, 1); object-fit:cover;" />
+  </a>
+
+  <a href="https://www.threads.com/@akash_raj_lohana" target="_blank">
+    <img src="https://www.edigitalagency.com.au/wp-content/uploads/Threads-app-white-logo-black-background.png" alt="Threads" 
+         style="width:60px; height:60px; border-radius:50%; border:4px solid rgba(67, 13, 54, 1); object-fit:cover;" />
+  </a>
+</section>
+ <section id="contact" class="contact">
+  <h2>CONTACT ME</h2>
+  <p>
+    <a href="mailto:akashraj65110@gmail.com" style="text-decoration: none; color: inherit;">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" 
+           style="width:20px; vertical-align:middle; margin-right:10px;" />
+      akashraj65110@gmail.com
+    </a>
+  </p>
+  <p>
+    <a href="mailto:akashraj56110@gmail.com" style="text-decoration: none; color: inherit;">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" 
+           style="width:20px; vertical-align:middle; margin-right:10px;" />
+      akashraj56110@gmail.com
+    </a>
+  </p>
+</section>
+
+
+  <footer>
+    <p>POWERED BY ARK PRODUCTION</p>
+    <p><a href="https://www.instagram.com/arkproduction.100?utm_source=ig_web_button_share_sheet&igsh=MWZkZHU5N202a2x6Yw==" 
+   target="_blank" 
+   style="color: white; text-decoration: none;">
+  @arkproduction.100
+</a>
+
+</p>
+  </footer>
+
+
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    window.onload = function () {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      document.body.style.overflow = 'auto';
+      document.body.style.visibility = 'visible';
+    };
+
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
+
+
